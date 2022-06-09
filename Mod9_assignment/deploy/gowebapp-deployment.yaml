@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gowebapp
+  labels:
+    run: gowebapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: gowebapp
+  template:
+    metadata:
+      labels:
+        run: gowebapp
+    spec:
+      containers:
+      - env:
+      name: DB_PASSWORD
+          #TODO: replace value: rootpasswd with valueFrom:
+            secretKeyRef:
+              #TODO: name is mysql
+              #TODO: key is password
+        image: gcr.io/${PROJECT_ID}/gowebapp:v3
+        name: gowebapp
+        ports:
+          - containerPort: 80
+        #TODO add a livenessProbe which performs httpGet
+        #aginst  the /register endpoint on port 80 with an initial
+        # deay of 15 seconds, and a timeout of 5 seconds
+        #TODO add a livenessProbe which performs httpGet 
+        # aginst the /register endpoint on port 80 with an initial
+        # deay of 25 seconds, and a timeout of 5 seconds
+        volumeMounts:
+          - #TODO: give the volume a name:config-volume
+            #TODO: specify the mountPath: /go/src/gowebapp/config
+      volumes: 
+      - #TODO: define volume name: config-volume
+        configMap:
+          #TODO: identify your ConfigMap name: gowebapp
+          items:
+          - key: webapp-config-json
+            path: config.json
