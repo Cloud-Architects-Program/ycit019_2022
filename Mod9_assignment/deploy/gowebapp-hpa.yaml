@@ -1,0 +1,8 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: gowebapp-hpa
+spec:
+  scaleTargetRef:
+  #TODO Create HPA based on CPU with minReplicas `1` and maxReplicas `5` with target 50.
+  #TODO: Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
