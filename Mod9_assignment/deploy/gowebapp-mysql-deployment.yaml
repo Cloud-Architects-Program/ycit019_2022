@@ -32,4 +32,6 @@ spec:
         #aginst port 3306 with an initial
         # deay of 30 seconds, and a timeout of 2 seconds
         #TODO add a readinessProbe for tcpSocket port 3306 with a 25 second 
-        #initial delay, and a timeout of 2 seconds   
+        #initial delay, and a timeout of 2 seconds
+        #resources:
+        #TODO define a resource request and limits based on VPA Recommender

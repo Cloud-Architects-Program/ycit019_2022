@@ -34,6 +34,8 @@ spec:
         volumeMounts:
           - #TODO: give the volume a name:config-volume
             #TODO: specify the mountPath: /go/src/gowebapp/config
+        #resources:
+        #TODO define a resource request and limits based on VPA Recommender
       volumes: 
       - #TODO: define volume name: config-volume
         configMap:
